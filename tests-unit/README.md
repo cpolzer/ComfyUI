@@ -2,7 +2,12 @@
 
 ## Install test dependencies
 
-`pip install -r tests-unit/requirements.txt`
+```bash
+pip install . --group test
+```
 
 ## Run tests
-`pytest tests-unit/`
+
+```bash
+task unit
+```

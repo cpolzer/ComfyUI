@@ -1,14 +1,100 @@
 [project]
 name = "ComfyUI"
 version = "0.18.1"
+description = "The most powerful and modular visual AI engine"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
+dependencies = [
+    "comfyui-frontend-package==1.42.8",
+    "comfyui-workflow-templates==0.9.39",
+    "comfyui-embedded-docs==0.4.3",
+    "torch",
+    "torchsde",
+    "torchvision",
+    "torchaudio",
+    "numpy>=1.25.0",
+    "einops",
+    "transformers>=4.50.3",
+    "tokenizers>=0.13.3",
+    "sentencepiece",
+    "safetensors>=0.4.2",
+    "aiohttp>=3.11.8",
+    "yarl>=1.18.0",
+    "pyyaml",
+    "Pillow",
+    "scipy",
+    "tqdm",
+    "psutil",
+    "alembic",
+    "SQLAlchemy",
+    "filelock",
+    "av>=14.2.0",
+    "comfy-kitchen>=0.2.8",
+    "comfy-aimdo>=0.2.12",
+    "requests",
+    "simpleeval>=1.0.0",
+    "blake3",
+    "kornia>=0.7.1",
+    "spandrel",
+    "pydantic~=2.0",
+    "pydantic-settings~=2.0",
+    "PyOpenGL",
+    "glfw",
+]
 
 [project.urls]
 homepage = "https://www.comfy.org/"
 repository = "https://github.com/comfyanonymous/ComfyUI"
 documentation = "https://docs.comfy.org/"
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "pylint",
+    "taskipy",
+]
+test = [
+    "pytest>=7.8.0",
+    "pytest-aiohttp",
+    "pytest-asyncio",
+    "websocket-client",
+    "opencv-python",
+    "scikit-image",
+]
+manager = [
+    "comfyui_manager==4.1",
+]
+
+[tool.setuptools.packages.find]
+include = [
+    "comfy*",
+    "comfy_api*",
+    "comfy_config*",
+    "comfy_execution*",
+    "comfy_extras*",
+    "app*",
+    "api_server*",
+    "alembic_db*",
+    "blueprints*",
+    "middleware*",
+    "script_examples*",
+    "utils*",
+]
+
+[tool.taskipy.tasks]
+dev = { cmd = "python main.py", help = "Start ComfyUI server" }
+dev-cpu = { cmd = "python main.py --cpu", help = "Start ComfyUI server (CPU only)" }
+lint = { cmd = "ruff check .", help = "Run ruff linter" }
+format = { cmd = "ruff format .", help = "Format code with ruff" }
+format-check = { cmd = "ruff format --check .", help = "Check code formatting" }
+pylint = { cmd = "pylint comfy_api_nodes", help = "Run pylint on API nodes" }
+unit = { cmd = "pytest tests-unit", help = "Run unit tests" }
+integration = { cmd = "pytest tests/execution -v --skip-timing-checks", help = "Run integration tests" }
+inference = { cmd = "pytest tests/inference", help = "Run inference tests" }
+quality = { cmd = "pytest tests/inference tests/execution -v --skip-timing-checks", help = "Quality regression tests" }
+test = { cmd = "pytest tests-unit tests/execution -v --skip-timing-checks", help = "Run unit + integration tests" }
+all = { cmd = "ruff check . && ruff format --check . && pylint comfy_api_nodes && pytest tests-unit tests/execution -v --skip-timing-checks", help = "Run all checks" }
 
 [tool.ruff]
 lint.select = [

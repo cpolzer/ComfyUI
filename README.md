@@ -289,7 +289,15 @@ And install it again with the command above.
 
 Install the dependencies by opening your terminal inside the ComfyUI folder and:
 
-```pip install -r requirements.txt```
+```bash
+pip install .
+```
+
+For development, also install dev and test dependencies:
+
+```bash
+pip install . --group dev --group test
+```
 
 After this you should have everything installed and can proceed to running ComfyUI.
 
@@ -302,7 +310,7 @@ You can install ComfyUI in Apple Mac silicon (M1 or M2) with any recent macOS ve
 1. Install pytorch nightly. For instructions, read the [Accelerated PyTorch training on Mac](https://developer.apple.com/metal/pytorch/) Apple Developer guide (make sure to install the latest pytorch nightly).
 1. Follow the [ComfyUI manual installation](#manual-install-windows-linux) instructions for Windows and Linux.
 1. Install the ComfyUI [dependencies](#dependencies). If you have another Stable Diffusion UI [you might be able to reuse the dependencies](#i-already-have-another-ui-for-stable-diffusion-installed-do-i-really-have-to-install-all-of-these-dependencies).
-1. Launch ComfyUI by running `python main.py`
+1. Launch ComfyUI by running `task dev` or `python main.py`
 
 > **Note**: Remember to add your models, VAE, LoRAs etc. to the corresponding Comfy folders, as discussed in [ComfyUI manual installation](#manual-install-windows-linux).
 
@@ -321,14 +329,14 @@ For models compatible with Cambricon Extension for PyTorch (torch_mlu). Here's a
 
 1. Install the Cambricon CNToolkit by adhering to the platform-specific instructions on the [Installation](https://www.cambricon.com/docs/sdk_1.15.0/cntoolkit_3.7.2/cntoolkit_install_3.7.2/index.html)
 2. Next, install the PyTorch(torch_mlu) following the instructions on the [Installation](https://www.cambricon.com/docs/sdk_1.15.0/cambricon_pytorch_1.17.0/user_guide_1.9/index.html)
-3. Launch ComfyUI by running `python main.py`
+3. Launch ComfyUI by running `task dev` or `python main.py`
 
 #### Iluvatar Corex
 
 For models compatible with Iluvatar Extension for PyTorch. Here's a step-by-step guide tailored to your platform and installation method:
 
 1. Install the Iluvatar Corex Toolkit by adhering to the platform-specific instructions on the [Installation](https://support.iluvatar.com/#/DocumentCentre?id=1&nameCenter=2&productId=520117912052801536)
-2. Launch ComfyUI by running `python main.py`
+2. Launch ComfyUI by running `task dev` or `python main.py`
 
 
 ## [ComfyUI-Manager](https://github.com/Comfy-Org/ComfyUI-Manager/tree/manager-v4)
@@ -339,12 +347,12 @@ For models compatible with Iluvatar Extension for PyTorch. Here's a step-by-step
 
 1. Install the manager dependencies:
    ```bash
-   pip install -r manager_requirements.txt
+   pip install . --group manager
    ```
 
 2. Enable the manager with the `--enable-manager` flag when running ComfyUI:
    ```bash
-   python main.py --enable-manager
+   task dev -- --enable-manager
    ```
 
 ### Command Line Options
@@ -358,7 +366,15 @@ For models compatible with Iluvatar Extension for PyTorch. Here's a step-by-step
 
 # Running
 
-```python main.py```
+```bash
+task dev
+```
+
+Or directly:
+
+```bash
+python main.py
+```
 
 ### For AMD cards not officially supported by ROCm
 
