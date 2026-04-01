@@ -66,26 +66,42 @@ manager = [
     "comfyui_manager==4.1",
 ]
 
-[tool.setuptools.packages.find]
-include = [
-    "comfy*",
-    "comfy_api*",
-    "comfy_config*",
-    "comfy_execution*",
-    "comfy_extras*",
-    "app*",
-    "api_server*",
-    "alembic_db*",
-    "blueprints*",
-    "middleware*",
-    "script_examples*",
-    "utils*",
-]
-exclude = [
-    "input*",
-    "output*",
-    "models*",
-    "custom_nodes*",
+[tool.setuptools]
+packages = [
+    "comfy",
+    "comfy.audio_encoders",
+    "comfy.cldm",
+    "comfy.comfy_types",
+    "comfy.extra_samplers",
+    "comfy.image_encoders",
+    "comfy.k_diffusion",
+    "comfy.ldm",
+    "comfy.sd1_tokenizer",
+    "comfy.t2i_adapter",
+    "comfy.taesd",
+    "comfy.text_encoders",
+    "comfy.weight_adapter",
+    "comfy_api",
+    "comfy_api.input",
+    "comfy_api.input_impl",
+    "comfy_api.internal",
+    "comfy_api.latest",
+    "comfy_api.torch_helpers",
+    "comfy_api.util",
+    "comfy_api.v0_0_1",
+    "comfy_api.v0_0_2",
+    "comfy_api_nodes",
+    "comfy_config",
+    "comfy_execution",
+    "comfy_extras",
+    "comfy_extras.chainner_models",
+    "app",
+    "api_server",
+    "alembic_db",
+    "blueprints",
+    "middleware",
+    "script_examples",
+    "utils",
 ]
 
 [tool.taskipy.tasks]
