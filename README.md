@@ -120,6 +120,12 @@ See what ComfyUI can do with the [newer template workflows](https://comfy.org/wo
 
 Workflow examples can be found on the [Examples page](https://comfyanonymous.github.io/ComfyUI_examples/)
 
+## Architecture
+
+ComfyUI is a graph-based execution engine with intelligent caching and memory management. Workflows are composed as node graphs, submitted as JSON, and executed via topological sort.
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for details on the request lifecycle, node system (V1/V3), caching strategies, and memory management.
+
 ## Release Process
 
 ComfyUI follows a weekly release cycle targeting Monday but this regularly changes because of model releases or large changes to the codebase. There are three interconnected repositories:
@@ -376,6 +382,8 @@ Or directly:
 python main.py
 ```
 
+Common flags: `--port 8188`, `--cpu`, `--listen 0.0.0.0`, `--disable-api-nodes`, `--disable-all-custom-nodes`
+
 ### For AMD cards not officially supported by ROCm
 
 Try running it with this command if you have issues:
@@ -479,3 +487,7 @@ This will use a snapshot of the legacy frontend preserved in the [ComfyUI Legacy
 ### Which GPU should I buy for this?
 
 [See this page for some recommendations](https://github.com/comfyanonymous/ComfyUI/wiki/Which-GPU-should-I-buy-for-ComfyUI)
+
+## Contributors
+
+See our [contributors page](https://github.com/comfyanonymous/ComfyUI/graphs/contributors) for a full list of everyone who has contributed to ComfyUI.
