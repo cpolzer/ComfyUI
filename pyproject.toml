@@ -81,6 +81,12 @@ include = [
     "script_examples*",
     "utils*",
 ]
+exclude = [
+    "input*",
+    "output*",
+    "models*",
+    "custom_nodes*",
+]
 
 [tool.taskipy.tasks]
 dev = { cmd = "python main.py", help = "Start ComfyUI server" }
