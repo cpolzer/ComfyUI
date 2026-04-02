@@ -45,11 +45,10 @@ jobs:
             echo If you just want to update normally, close this and run update_comfyui.bat instead.
             echo -
             pause
-            ..\python_embeded\python.exe -s -m pip install --upgrade ${{ inputs.torch_dependencies }} -r ../ComfyUI/requirements.txt pygit2
+            ..\python_embeded\python.exe -s -m pip install --upgrade ${{ inputs.torch_dependencies }} ../ComfyUI pygit2
             pause" > update_comfyui_and_python_dependencies.bat
 
-            grep -v comfyui requirements.txt > requirements_nocomfyui.txt
-            python -m pip wheel --no-cache-dir ${{ inputs.torch_dependencies }} -r requirements_nocomfyui.txt pygit2 -w ./temp_wheel_dir
+            python -m pip wheel --no-cache-dir ${{ inputs.torch_dependencies }} ../ComfyUI pygit2 -w ./temp_wheel_dir
             python -m pip install --no-cache-dir ./temp_wheel_dir/*
             echo installed basic
             ls -lah temp_wheel_dir
